@@ -23,7 +23,7 @@
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>6.6.4.FINAL</version>
+      <version>6.6.5.FINAL</version>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
