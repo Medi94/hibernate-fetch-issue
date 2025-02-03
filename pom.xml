@@ -10,16 +10,20 @@
 
   <properties>
     <java.version>21</java.version>
-    <java.source.version>21</java.source.version>
-    <java.target.version>21</java.target.version>
-    <java.release.version>21</java.release.version>
+
+    <java.source.version>${java.version}</java.source.version>
+    <java.target.version>${java.version}</java.target.version>
+    <java.release.version>${java.version}</java.release.version>
+
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>6.6.5.FINAL</version>
+      <version>6.6.6.FINAL</version>
     </dependency>
     <dependency>
       <groupId>org.postgresql</groupId>
