@@ -5,10 +5,12 @@ import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class InvoicePositionId implements Serializable {
 
     @Id
