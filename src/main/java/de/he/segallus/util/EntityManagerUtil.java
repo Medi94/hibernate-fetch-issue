@@ -1,7 +1,5 @@
 package de.he.segallus.util;
 
-import java.util.Map;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Persistence;
 
