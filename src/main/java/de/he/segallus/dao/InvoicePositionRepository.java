@@ -18,20 +18,25 @@ public class InvoicePositionRepository {
 
     public List<InvoicePositionGroup> hibernateTestCall() {
 
-        entityManager.getTransaction().begin();
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<InvoicePositionGroup> query = cb.createQuery(InvoicePositionGroup.class);
-        Root<InvoicePositionGroup> root = query.from(InvoicePositionGroup.class);
+        try {
+            entityManager.getTransaction().begin();
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<InvoicePositionGroup> query = cb.createQuery(InvoicePositionGroup.class);
+            Root<InvoicePositionGroup> root = query.from(InvoicePositionGroup.class);
 
-        Fetch<Object, Object> invoicePositionFetch = root.fetch("invoicePositions", JoinType.LEFT);
+            Fetch<Object, Object> invoicePositionFetch = root.fetch("invoicePositions", JoinType.LEFT);
 
-        // a single fetch does not throw the AssertionError
-        invoicePositionFetch.fetch("invoicePositionDetails", JoinType.LEFT);
-        invoicePositionFetch.fetch("invoicePositionTaxes", JoinType.LEFT);
+            // a single fetch does not throw the AssertionError
+            invoicePositionFetch.fetch("invoicePositionDetails", JoinType.LEFT);
+            invoicePositionFetch.fetch("invoicePositionTaxes", JoinType.LEFT);
 
-        query.select(root);
-        TypedQuery<InvoicePositionGroup> tc = entityManager.createQuery(query);
-        return tc.getResultList();
+            query.select(root);
+            TypedQuery<InvoicePositionGroup> tc = entityManager.createQuery(query);
+            return tc.getResultList();
+        } catch (Exception e) {
+            entityManager.getTransaction().commit();
+        }
+        return null;
     }
 
 }
